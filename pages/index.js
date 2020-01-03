@@ -1,6 +1,9 @@
+import CounterDownTimer from '../components/counting_down_timer'
+
 const Index = () => (
     <div>
-        <h1>Hello Next.JS</h1>
+        <h1>Home Page</h1>
+        <CounterDownTimer/>
     </div>
 );
 
