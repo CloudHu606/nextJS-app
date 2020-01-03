@@ -11,15 +11,15 @@ class CounterDownTimer extends React.Component {
 
     componentDidMount() {
         const date = this.props.endDate;
-    
+
         this.interval = setInterval(() => {
             var time = this.getTimeRemaining(date);
-            this.setState({ days: time.days, hours: time.hours, minutes: time.minutes, seconds: time.seconds });  
-        }, 1000);         
+            this.setState({ days: time.days, hours: time.hours, minutes: time.minutes, seconds: time.seconds });
+        }, 1000);
     }
 
     componentWillUpdate() {
-        if( this.state.seconds < 0){
+        if (this.state.seconds < 0) {
             clearInterval(this.interval)
         }
     }
@@ -30,13 +30,13 @@ class CounterDownTimer extends React.Component {
         }
     }
 
-    getTimeRemaining (endtime) {
-       var t = Date.parse(endtime) - Date.parse(new Date());
- 
-       var seconds = Math.floor( (t/1000) % 60 );
-       var minutes = Math.floor( (t/1000/60) % 60 );
-       var hours = Math.floor( (t/(1000*60*60)) % 24 );
-       var days = Math.floor( t/(1000*60*60*24) );
+    getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
         return {
             'total': t,
             'days': days,
@@ -49,12 +49,12 @@ class CounterDownTimer extends React.Component {
     render() {
         var { days, hours, minutes, seconds } = this.state;
 
-        return(
+        return (
             <div className="container">
                 <h1 id="head">Countdown to 2020 Year:</h1>
-                
-                {seconds >= 0? 
-                    ( <div className="clockContainer">
+
+                {seconds >= 0 ?
+                    (<div className="clockContainer">
                         <div id="clockdiv">
                             <div>
                                 <span className="days">{days}</span>
@@ -72,11 +72,11 @@ class CounterDownTimer extends React.Component {
                                 <span className="seconds">{seconds}</span>
                                 <div className="smalltext">Seconds</div>
                             </div>
-                        </div>                        
-                      </div>):
+                        </div>
+                    </div>) :
                     (<div className='countEnd'> <div className='text'>2020 Year is end!</div></div>)
                 }
-                    
+
                 <style jsx>
                     {`
                     .container > h1{
@@ -145,7 +145,7 @@ class CounterDownTimer extends React.Component {
                     
                     `}
                 </style>
-            </div>        
+            </div>
         );
     }
 
