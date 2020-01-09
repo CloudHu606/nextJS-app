@@ -9,6 +9,7 @@ class Demo1 extends React.Component {
     render() {
 
         const timeObj = getTimeRemaining('2020 / 12 / 31');
+        console.log(this.props.state);
 
         return (
             <Layout>
