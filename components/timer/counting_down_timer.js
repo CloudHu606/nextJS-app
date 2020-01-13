@@ -1,19 +1,20 @@
 import React from 'react'
+import { getTimeRemaining } from '../../lib/time';
 
 class CounterDownTimer extends React.Component {
 
     state = {
-        days: undefined,
-        hours: undefined,
-        minutes: undefined,
-        seconds: undefined
+        days: this.props.time.days,
+        hours: this.props.time.hours,
+        minutes: this.props.time.minutes,
+        seconds: this.props.time.seconds
     };
 
     componentDidMount() {
         const date = this.props.endDate;
 
         this.interval = setInterval(() => {
-            var time = this.getTimeRemaining(date);
+            var time = getTimeRemaining(date);
             this.setState({ days: time.days, hours: time.hours, minutes: time.minutes, seconds: time.seconds });
         }, 1000);
     }
@@ -30,22 +31,6 @@ class CounterDownTimer extends React.Component {
         }
     }
 
-    getTimeRemaining(endtime) {
-        var t = Date.parse(endtime) - Date.parse(new Date());
-
-        var seconds = Math.floor((t / 1000) % 60);
-        var minutes = Math.floor((t / 1000 / 60) % 60);
-        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-        var days = Math.floor(t / (1000 * 60 * 60 * 24));
-        return {
-            'total': t,
-            'days': days,
-            'hours': hours,
-            'minutes': minutes,
-            'seconds': seconds
-        }
-    }
-
     render() {
         var { days, hours, minutes, seconds } = this.state;
 
@@ -53,7 +38,7 @@ class CounterDownTimer extends React.Component {
             <div className="container">
                 <h1 id="head">Countdown to 2020 Year:</h1>
 
-                {seconds >= 0 ?
+                {seconds >= 0 || seconds === undefined ?
                     (<div className="clockContainer">
                         <div id="clockdiv">
                             <div>

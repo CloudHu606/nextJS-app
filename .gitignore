@@ -59,12 +59,7 @@ typings/
 
 # dotenv environment variables file
 *.env
-
-keys.js
-
 .next/
-
 static/media
 
-out/
 
