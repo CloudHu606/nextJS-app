@@ -1,52 +1,32 @@
 import React from 'react';
 import Link from 'next/link'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux'
+import { setNav } from '../../store';
 
 class Nav extends React.Component {
 
-    state = {
-        activeNav: { home: true, demos: false, about: false },
-    }
-
     selectedNav = (currentNav) => {
-        const newActiveNav = this.setNav(currentNav);
-        this.setState({ activeNav: newActiveNav });
-        //console.log(newActiveNav);
-    }
-
-    setNav = (activeNav) => {
-        var tmp = this.state.activeNav;
-
-        for (var key of Object.keys(tmp)) {
-            if (key === activeNav) {
-                tmp[key] = true;
-            } else {
-                tmp[key] = false;
-            }
-        }
-
-        return tmp;
+        this.props.setNav(currentNav);
     }
 
     render() {
-
-        const { activeNav } = this.state;
-
         return (
             <div className='nav-container'>
                 <nav id="nav">
                     <div className='each-nav'>
                         <Link href="/">
-                            <a className={activeNav.home ? "show" : ""} onClick={() => this.selectedNav('home')}>Home</a>
+                            <a className={this.props.nav === 'home' ? "show" : ""} onClick={() => this.selectedNav('home')}>Home</a>
                         </Link>
                     </div>
                     <div className='each-nav'>
                         <Link href="/demos/demo1">
-                            <a className={activeNav.demos ? "show" : ""} onClick={() => this.selectedNav('demos')}>demo1</a>
+                            <a className={this.props.nav === 'demos' ? "show" : ""} onClick={() => this.selectedNav('demos')}>demo1</a>
                         </Link>
                     </div>
                     <div className='each-nav'>
                         <Link href="/about">
-                            <a className={activeNav.about ? "show" : ""} onClick={() => this.selectedNav('about')}>About</a>
+                            <a className={this.props.nav === 'about' ? "show" : ""} onClick={() => this.selectedNav('about')}>About</a>
                         </Link>
                     </div>
                 </nav>
@@ -69,11 +49,13 @@ class Nav extends React.Component {
 
                     .each-nav {
                         padding: 5px 10px;
+                        cursor: pointer;
+                        margin: 10px;
                     }
 
                     .each-nav a {
                         text-decoration: none;
-                        color: white;
+                        color: white;                       
                     }
 
                     .each-nav a:hover {
@@ -82,7 +64,7 @@ class Nav extends React.Component {
                     }                    
 
                      .show  {
-                        background-color: gray;
+                        color: grey !important;
                     }
 
                     `}
@@ -95,6 +77,15 @@ class Nav extends React.Component {
 
 }
 
-export default Nav;
+const mapStateToProps = ({ nav }) => ({
+    nav,
+});
+
+const mapDispatchToProps = dispatch => ({
+    setNav: bindActionCreators(setNav, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
 
 
