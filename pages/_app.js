@@ -4,6 +4,7 @@ import ReduxStore from '../ReduxStore';
 import { Provider } from 'react-redux';
 
 class MyApp extends App {
+
   render() {
     const { Component, pageProps, reduxStore } = this.props;
     return (

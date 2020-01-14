@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
 
 const initialState = {
-  nav: 'home',
+  nav: '',
 };
 
 export const actionTypes = {
@@ -15,6 +15,7 @@ export const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     case actionTypes.SETNAV:
+      // localStorage.setItem('nav', action.payload);
       return Object.assign({}, state, { nav: action.payload });
 
     default:
