@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from '../header/nav';
 
 class Layout extends React.Component {
 
@@ -7,6 +8,7 @@ class Layout extends React.Component {
         // header
         return (
             <div>
+                <Nav />
                 {this.props.children}
 
                 <style jsx>

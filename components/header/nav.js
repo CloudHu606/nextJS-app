@@ -29,6 +29,11 @@ class Nav extends React.Component {
                             <a className={this.props.nav === 'about' ? "show" : ""} onClick={() => this.selectedNav('about')}>About</a>
                         </Link>
                     </div>
+                    <div className='each-nav'>
+                        <Link href="/demos/demo2">
+                            <a className={this.props.nav === 'demos' ? "show" : ""} onClick={() => this.selectedNav('demos')}>DEMO2</a>
+                        </Link>
+                    </div>
                 </nav>
 
 
