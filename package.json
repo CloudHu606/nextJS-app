@@ -11,6 +11,9 @@
   "author": "Cloud Hu <jingqihu@hotmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@reduxjs/toolkit": "^1.2.1",
     "isomorphic-fetch": "^2.2.1",
     "next": "^9.1.6",
