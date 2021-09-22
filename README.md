@@ -8,6 +8,7 @@ Setup a NextJS app
 yarn create next-app **appName**
 
 React Redux Architecture 
+---
 
 1. yarn add redux 
 2. yarn add react-redux 
